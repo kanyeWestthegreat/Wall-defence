@@ -1053,7 +1053,6 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Power, function (sprite, oth
     info.changeCountdownBy(10)
     info.changeScoreBy(10)
     spawn_rate += 10
-    spider_speed += 10
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     Direction_facing = 2
@@ -1216,8 +1215,10 @@ let mySprite = sprites.create(img`
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb1111111111111111111111111111111111111111111111111111111111111111111111
     `, SpriteKind.Player)
 pause(1000)
-game.splash("wall defence", "by theo")
-game.splash("Right/Left Movement", "A:normal shot B Big shot(takes away one heart)")
+game.splash("Wall Defense", "by Theo")
+game.splash("Right/Left Movement", "A: Normal Shot B: Beam Shot (takes away one heart)")
+game.splash("Battery", "shoot them for hearts if it hits your wall, it still heals you, but by one heart instead of three. ")
+game.splash("don't let the", "spiders touch the top of your wall or you'll lose health.")
 tiles.setCurrentTilemap(tilemap`level1`)
 gun = sprites.create(img`
     . . . . . . . . . . . . . . . . 
