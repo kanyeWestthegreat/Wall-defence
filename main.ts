@@ -1314,8 +1314,8 @@ game.onUpdateInterval(randint(5000, 20000), function () {
     tiles.placeOnTile(WALL_FIXER, tiles.getTileLocation(randint(1, 10), 1))
     WALL_FIXER.setVelocity(0, 50)
 })
-game.onUpdateInterval(30000, function () {
-    if (Math.percentChance(5)) {
+game.onUpdateInterval(1000, function () {
+    if (Math.percentChance(1)) {
         Power = sprites.create(img`
             ffffffffffffffffffffffffffffffffffffffff
             ffffffffffffffffffffffffffffffffffffffff
