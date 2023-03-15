@@ -1043,15 +1043,17 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
     sprites.destroy(sprite)
-    top_spider_speed += 1
     beam_speed += 15
     bullet_fast += 5
     spawn_rate += 0.5
     info.changeScoreBy(5)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Power, function (sprite, otherSprite) {
-    info.changeLifeBy(10)
+    info.changeLifeBy(5)
     info.changeCountdownBy(10)
+    info.changeScoreBy(10)
+    spawn_rate += 10
+    spider_speed += 10
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     Direction_facing = 2
@@ -1077,7 +1079,6 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.beam, function (sprite, otherSprite) {
     sprites.destroy(sprite, effects.spray, 100)
     sprites.destroy(sprite)
-    top_spider_speed += 5
     bullet_fast += 5
     beam_speed += 30
     info.changeScoreBy(15)
@@ -1086,7 +1087,6 @@ let Power: Sprite = null
 let WALL_FIXER: Sprite = null
 let spiderlow: Sprite = null
 let spidertop: Sprite = null
-let top_spider_speed = 0
 let bullet: Sprite = null
 let projectile: Sprite = null
 let Direction_facing = 0
@@ -1313,7 +1313,7 @@ game.onUpdateInterval(randint(5000, 20000), function () {
     tiles.placeOnTile(WALL_FIXER, tiles.getTileLocation(randint(1, 10), 1))
     WALL_FIXER.setVelocity(0, 50)
 })
-game.onUpdateInterval(50000, function () {
+game.onUpdateInterval(30000, function () {
     if (Math.percentChance(5)) {
         Power = sprites.create(img`
             ffffffffffffffffffffffffffffffffffffffff
